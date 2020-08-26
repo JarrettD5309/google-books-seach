@@ -29,8 +29,6 @@ app.get("/api/booksearch", function (req, res) {
   
   var searchURL = "https://www.googleapis.com/books/v1/volumes?q=" + req.query.q + "&projection=lite&key=" + process.env.apiKey;
 
-  
-
   axios.get(searchURL).then(function (result) {
     var bookArr = [];
 
@@ -40,12 +38,16 @@ app.get("/api/booksearch", function (req, res) {
         var authorArr = result.data.items[i].volumeInfo.authors;
         var authors = authorArr.join(", ");
         var bookImage = result.data.items[i].volumeInfo.imageLinks.thumbnail;
+        var bookDescription = result.data.items[i].volumeInfo.description;
+        var bookLink = result.data.items[i].volumeInfo.infoLink;
 
         var bookObj = {
           id: bookID,
           title: bookTitle,
           author: authors,
-          image: bookImage
+          image: bookImage,
+          description: bookDescription,
+          infoLink: bookLink
         };
 
         bookArr.push(bookObj);

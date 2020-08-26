@@ -1,11 +1,12 @@
 import React from "react";
 import Jumbotron from "./Jumbotron";
 import BookSearch from "./BookSearch";
+import SearchCard from "./SearchCard";
 import API from "../utils/API";
 
 class SearchContainer extends React.Component {
     state = {
-        result: {},
+        result: [],
         bookinput: ""
     };
 
@@ -54,6 +55,15 @@ class SearchContainer extends React.Component {
             <div className="container">
                 <Jumbotron />
                 <BookSearch value={this.state.bookinput} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
+                
+                <div className="card rounded-0 my-3">
+                <div className="card-body">
+                    <h5 className="card-title">Results</h5>
+                    {this.state.result.map(book => (
+                        <SearchCard author={book.author} description={book.description} id={book.id} image={book.image} title={book.title} infoLink={book.infoLink}/>
+                    )) }
+                </div>
+            </div>
             </div>
             </div>
         );
