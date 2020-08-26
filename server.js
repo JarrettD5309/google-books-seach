@@ -1,7 +1,9 @@
 const express = require("express");
 const path = require("path");
 var mongoose = require("mongoose");
+var axios = require("axios");
 var db = require("./models");
+require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -13,12 +15,46 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+const MONGODB_URI = process.env.mongodburi;
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/googlebooks", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI || "mongodb://localhost/googlebooks", { useNewUrlParser: true });
 
 mongoose.connection.on("connected", () => console.log("Mongoose is connected")
 );
 // Define API routes here
+
+// google book search
+app.get("/api/booksearch", function (req, res) {
+  
+  
+  var searchURL = "https://www.googleapis.com/books/v1/volumes?q=" + req.query.q + "&projection=lite&key=" + process.env.apiKey;
+
+  
+
+  axios.get(searchURL).then(function (result) {
+    var bookArr = [];
+
+      for (var i = 0; i < 5; i++) {
+        var bookID = result.data.items[i].id;
+        var bookTitle = result.data.items[i].volumeInfo.title;
+        var authorArr = result.data.items[i].volumeInfo.authors;
+        var authors = authorArr.join(", ");
+        var bookImage = result.data.items[i].volumeInfo.imageLinks.thumbnail;
+
+        var bookObj = {
+          id: bookID,
+          title: bookTitle,
+          author: authors,
+          image: bookImage
+        };
+
+        bookArr.push(bookObj);
+
+      };
+      res.json(bookArr);
+  });
+});
+
 app.post("/api", function(req, res) {
   db.Book.create({
     title: "This is a test2",

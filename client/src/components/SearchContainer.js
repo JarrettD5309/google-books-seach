@@ -1,10 +1,32 @@
 import React from "react";
 import Jumbotron from "./Jumbotron";
+import BookSearch from "./BookSearch";
+import API from "../utils/API";
 
 class SearchContainer extends React.Component {
     state = {
+        result: {},
+        bookinput: ""
+    };
 
+    handleInputChange = event => {
+        let value = event.target.value;
+        
+        this.setState({
+            bookinput: value
+        });
     }
+
+    handleFormSubmit = event => {
+        event.preventDefault();
+
+        fetch("/api/booksearch?q=" + this.state.bookinput)
+        .then(res=>res.json())
+        .then((info) => {
+            this.setState({result: info})})
+        .catch(err=> console.log(err));
+        
+      };
 
     render() {
         return (
@@ -31,6 +53,7 @@ class SearchContainer extends React.Component {
 
             <div className="container">
                 <Jumbotron />
+                <BookSearch value={this.state.bookinput} handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
             </div>
             </div>
         );
