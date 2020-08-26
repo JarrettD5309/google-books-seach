@@ -12,14 +12,14 @@ function SavedCard(props) {
                         </div>
                         <div className="col-md-4 col-sm-6">
                             <div className="text-sm-right">
-                                <a className="btn btn-primary mr-2" href={props.infoLink} target="_blank">View</a>
+                                <a className="btn btn-primary mr-2" href={props.infoLink} target="_blank" rel="noopener noreferrer">View</a>
                                 <button className="btn btn-secondary" data-id={props.id} onClick={props.handleBookDelete}>Delete</button>
                             </div>
                         </div>
                     </div>
                     <div className="row mt-2">
                         <div className="col-sm-4 mb-2">
-                            <img src={props.image} className="img-fluid"></img>
+                            <img src={props.image} className="img-fluid" alt={props.title + " cover"}></img>
                         </div>
                         <div className="col-sm-8">
                         <p className="card-text">{props.description}</p>
