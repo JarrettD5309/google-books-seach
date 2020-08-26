@@ -58,10 +58,7 @@ app.get("/api/booksearch", function (req, res) {
 });
 
 app.post("/api", function(req, res) {
-  db.Book.create({
-    title: "This is a test2",
-    authors: "Jarrett DOugherty"
-  })
+  db.Book.create(req.body)
     .then(result=>res.json(result))
     .catch (err=>res.json(err))
 });

@@ -5,10 +5,9 @@ var Schema = mongoose.Schema;
 
 var BookSchema = new Schema({
     title: {
-        type: String,
-        unqiue: true
+        type: String
     },
-    authors: {
+    author: {
         type: String
     },
     description: {
@@ -17,8 +16,12 @@ var BookSchema = new Schema({
     image: {
         type: String
     },
-    link: {
+    infoLink: {
         type: String
+    },
+    id: {
+        type: String,
+        unqiue: true
     }
 });
 

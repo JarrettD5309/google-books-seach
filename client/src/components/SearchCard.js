@@ -13,7 +13,7 @@ function SearchCard(props) {
                         <div className="col-md-4 col-sm-6">
                             <div className="text-sm-right">
                                 <a className="btn btn-primary mr-2" href={props.infoLink} target="_blank">View</a>
-                                <button className="btn btn-secondary">Save</button>
+                                <button className="btn btn-secondary" data-index={props.index} onClick={props.handleBookSave}>Save</button>
                             </div>
                         </div>
                     </div>
