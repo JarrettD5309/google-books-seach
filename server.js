@@ -62,6 +62,19 @@ app.post("/api", function(req, res) {
     .then(result=>res.json(result))
     .catch (err=>res.json(err))
 });
+
+app.get("/api", function(req, res) {
+  db.Book.find({})
+    .then(result=>res.json(result))
+    .catch (err=>res.json(err))
+});
+
+app.delete("/api", function(req, res) {
+  console.log("THIS IS THE ID: " + req.body.id);
+  db.Book.deleteOne({id: req.body.id})
+    .then(result=>res.json(result))
+    .catch (err=>res.json(err))
+});
 // Send every other request to the React app
 // Define any API routes before this runs
 app.get("*", (req, res) => {

@@ -2,7 +2,6 @@ import React from "react";
 import Jumbotron from "./Jumbotron";
 import BookSearch from "./BookSearch";
 import SearchCard from "./SearchCard";
-import API from "../utils/API";
 
 class SearchContainer extends React.Component {
     state = {
@@ -44,7 +43,14 @@ class SearchContainer extends React.Component {
             },
             body: JSON.stringify(bookInfo)
         })
-            .then(result => console.log(result))
+            .then(result => {console.log(result);
+            alert("Your book has been saved!");
+            this.setState({
+                result: [],
+                bookinput: ""
+            });
+
+            })
             .catch(err => console.log(err));
 
     };
