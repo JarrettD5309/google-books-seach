@@ -28,7 +28,6 @@ app.get("/api/booksearch", function (req, res) {
   
   
   var searchURL = "https://www.googleapis.com/books/v1/volumes?q=" + req.query.q + "&projection=lite&key=" + process.env.apiKey;
-  console.log(searchURL);
   axios.get(searchURL).then(function (result) {
     var bookArr = [];
 
