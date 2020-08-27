@@ -1,29 +1,60 @@
-# Create React Express App
+# Google Books Search MERN App
+<https://google-books-react-project.herokuapp.com/> \
+Version 1.0 \
+Original Deployment Date - Aug 27, 2020\
+By Jarrett Dougherty
 
-## About This Boilerplate
+<kbd><img src="md_images/google-books-mern.png" alt="Same Page Image" width="500"/></kbd>
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+## Description
+Google Books Search is a full-stack MERN application that allows users to search for and save books. The search feature utlizes the Google Books API. The application is built with React.js, Node.js, Express.js, and MongoDB.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+## Technologies Used
+* React.js
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* Axios
+* Bootstrap
+* JavaScript
+* HTML
+* CSS
 
-## Starting the app locally
+## Instructions For Use
+### Getting Started 
+1. Simply click the link to start the web app.
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+<https://google-books-react-project.herokuapp.com/>
 
+2. Input a book title or author in the Book Search bar and click `Search` to get the top five results for the query.
+
+3. Click the `View` button to see the Google Books entry for the title. Click `Save` to add to the Saved list.
+
+4. Navigate to the `Saved` tab to see other titles that users have previously saved.
+
+5. Books can be removed from the Saved list with the `Delete` button.
+
+### GitHub Code
+1. Once you have downloaded the program you will need to run the following command to install the required node packages.
+
+```console
+$ npm install
 ```
-npm install
+2. You will need to have [MongoDB](https://www.mongodb.com/try/download/community) installed on your computer to run the application locally. 
+
+3. Next, create a file named `.env` at the root level, add the following to it, replacing the value ****** with your Google Books API Key. (An API key from [Google Books](https://developers.google.com/books/docs/v1/getting_started) is required to run the application locally.)
+
+```console
+# mySQL password
+
+apiKey=******
 ```
 
-This should install node modules within the server and the client folder.
+4. Run the following code to start the app in your local environment.
 
-After both installations complete, run the following command in your terminal:
-
-```
-npm start
+```console
+$ npm start
 ```
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+5. Open `http://localhost:3000` in your browser to view the app.
