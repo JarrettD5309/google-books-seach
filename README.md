@@ -4,7 +4,7 @@ Version 1.0 \
 Original Deployment Date - Aug 27, 2020\
 By Jarrett Dougherty
 
-<kbd><img src="md_images/google-books-mern.png" alt="Same Page Image" width="500"/></kbd>
+<kbd><img src="md_images/google-books-mern.png" alt="Google Books Search Image" width="500"/></kbd>
 
 ## Description
 Google Books Search is a full-stack MERN application that allows users to search for and save books. The search feature utlizes the Google Books API. The application is built with React.js, Node.js, Express.js, and MongoDB.
@@ -46,8 +46,6 @@ $ npm install
 3. Next, create a file named `.env` at the root level, add the following to it, replacing the value ****** with your Google Books API Key. (An API key from [Google Books](https://developers.google.com/books/docs/v1/getting_started) is required to run the application locally.)
 
 ```console
-# mySQL password
-
 apiKey=******
 ```
 
